@@ -21,7 +21,10 @@ class Carusel extends Component {
   }
 
   componentDidMount() {
-    this.bindScrollSnap();
+  	if(CSS.supports('scroll-snap-align: start')){
+  		//If scroll snap isn't supported with CSS use JS
+  		this.bindScrollSnap();
+  	}
   }
 
   render() {
@@ -37,11 +40,14 @@ class Carusel extends Component {
             width: 100%;
             height: 100vh;
             text-align: center;
-            overflow-y: scroll;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scroll-padding: 10px;
           }
           .child {
             height: 100%;
             margin: 0;
+            scroll-snap-align: center;
           }
           .child :nth-child(odd) {
             background-color: red;
