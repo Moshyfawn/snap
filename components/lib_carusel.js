@@ -21,7 +21,7 @@ class Carusel extends Component {
   }
 
   componentDidMount() {
-  	if(CSS.supports('scroll-snap-align: start')){
+  	if(!CSS.supports('scroll-snap-align: start')){
   		//If scroll snap isn't supported with CSS use JS
   		this.bindScrollSnap();
   	}
